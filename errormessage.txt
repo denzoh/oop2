@@ -1,0 +1,79 @@
+ cout >> "Hello, World!\n";
+         ^
+In file included from /usr/include/c++/5/iostream:40:0,
+                 from 3subsection.cpp:1:
+/usr/include/c++/5/istream:803:5: note: candidate: template<class _Traits> std::basic_istream<char, _Traits>& std::operator>>(std::basic_istream<char, _Traits>&, unsigned char*)
+     operator>>(basic_istream<char, _Traits>& __in, unsigned char* __s)
+     ^
+/usr/include/c++/5/istream:803:5: note:   template argument deduction/substitution failed:
+3subsection.cpp:9:9: note:   ‘std::ostream {aka std::basic_ostream<char>}’ is not derived from ‘std::basic_istream<char, _Traits>’
+ cout >> "Hello, World!\n";
+         ^
+In file included from /usr/include/c++/5/iostream:40:0,
+                 from 3subsection.cpp:1:
+/usr/include/c++/5/istream:808:5: note: candidate: template<class _Traits> std::basic_istream<char, _Traits>& std::operator>>(std::basic_istream<char, _Traits>&, signed char*)
+     operator>>(basic_istream<char, _Traits>& __in, signed char* __s)
+     ^
+/usr/include/c++/5/istream:808:5: note:   template argument deduction/substitution failed:
+3subsection.cpp:9:9: note:   ‘std::ostream {aka std::basic_ostream<char>}’ is not derived from ‘std::basic_istream<char, _Traits>’
+ cout >> "Hello, World!\n";
+         ^
+3subsection.cpp:12:1: error: expected ‘;’ before ‘return’
+ return 0;
+ ^
+oopii@oopiibox:~/Desktop/ASSIGNMENT$ g++ 3subsection.cpp
+3subsection.cpp: In function ‘int main()’:
+3subsection.cpp:12:1: error: expected ‘;’ before ‘return’
+ return 0;
+ ^
+oopii@oopiibox:~/Desktop/ASSIGNMENT$ g++ 3subsection.cpp
+oopii@oopiibox:~/Desktop/ASSIGNMENT$ ./a.out
+3
+Hello, World!
+Hello, World!
+Hello, World!
+oopii@oopiibox:~/Desktop/ASSIGNMENT$ clear
+oopii@oopiibox:~/Desktop/ASSIGNMENT$ ls
+1scope.cpp  2subsection.cpp  3subsection.cpp  a.out  section.cpp  subsection.cpp
+oopii@oopiibox:~/Desktop/ASSIGNMENT$ g++ 1scope.cpp
+1scope.cpp: In function ‘int main()’:
+1scope.cpp:9:6: error: conflicting declaration ‘char arg1’
+ char arg1 ='A';
+      ^
+1scope.cpp:5:5: note: previous declaration as ‘int arg1’
+ int arg1;
+     ^
+oopii@oopiibox:~/Desktop/ASSIGNMENT$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
