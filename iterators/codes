@@ -1,1 +1,67 @@
+#include <iostream>
+#include <set> // provides the std::set container
+#include<cstdlib>
+// templatise the function below
+template<typename T>
+bool fncomp (T lhs, T rhs) {
+  return lhs>rhs;
+}
+// templatise the struct below
+template<typename T>
+struct classcomp {
+  bool operator() (const T& lhs, const T& rhs) const
+  {
+    return lhs > rhs;
+  }
+};
+//!NOTE: Should work with templatised fncomp, classcomp
+void ExampleOfUsingClassComp(){
+  classcomp<int> cc; // explicit object 'cc'
+  std::cout << "classcomp(4, 2) = " << cc(4, 2) << std::endl;
+  // The call below also works by creating a temporary object
+  std::cout << "classcomp<double>()(2.253, 2.255) = "
+            <<  classcomp<double>()(2.253, 2.255)
+            << std::endl;
+  std::cout << "classcomp<char>()('@', 'A') = "
+            <<  classcomp<char>()('@', 'A')
+            << std::endl;
+}
+template <class Iterator>
+void PrintSetContents(const Iterator begin, const Iterator end){
+for(auto iter=begin; iter != end; iter++)
+std::cout << "'" << (*iter) << "'" << " ";
+std::cout << std ::endl;
+}
+int main ()
+{
+  // Once you templatise the struct,
+  // the function call below should work
+  ExampleOfUsingClassComp();
 
+  std::set<int> first; // empty set of ints
+
+  int myints[]= {10,20,30,40,50,10,20,30,40,50,10,20,30,40,50,10,20,30,40,50,10,20,30,40,50,56,5,8,456,98};
+  std::set<int, classcomp<int> > second (myints,myints+sizeof(myints)/sizeof(int));
+  PrintSetContents(second.begin(),second.end());// range
+  /*std::set<int, classcomp<int> >::iterator it;
+  int i=0;
+  for(it = second.begin();it != second.end(); ++it){
+      std::cout << "second[" << i++ << "]=\t"
+      << (*it) << std::endl;
+  }*/
+ /*for(int i=0;<sizeof(myints)/sizeof(int); ++i){
+      std::cout << "my ints[" <<1 <<"] = \t"
+      <<myints[i] << std::endl;*/
+  //!NOTE: uses 'copy constructor' to create 'third' from
+  //       'second'.
+  std::set<int, classcomp<int> > third (second);
+  //!NOTE: uses constructor that takes iterators to create
+  //       'fourth' from 'second';
+  std::set<int> fourth (second.begin(), second.end());
+  //!NOTE: making classcomp the Compare object
+  std::set<int,classcomp<int>> fifth;
+  //!NOTE: making use of a function pointer as Compare object
+  bool(*fn_pt)(int,int) = fncomp;
+  std::set<int,bool(*)(int,int)> sixth (fn_pt);
+  return 0;
+}
