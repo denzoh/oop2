@@ -127,12 +127,12 @@ int main(){
   map<string, int> kitchen;
   kitchen["tumblers"] = 4;
   kitchen["pots"]     = 2;
-  kitchen["aladdin"]  = 20;
+  kitchen["steriles"]  = 5;
 
   vector<Pot*> containers;
   ClayPotBuilder* cpb = new ClayPotBuilder;
   TumblerBuilder* tmb = new TumblerBuilder;
-  SterileTumblerBuilder* afb=new SterileTumbleBuilder;
+  SterileTumblerBuilder* afb=new SterileTumblerBuilder;
   
   Potter potter;
   map<string, int>::const_iterator cit = kitchen.begin();
@@ -142,7 +142,7 @@ int main(){
       pattern = tmb;
     else if(cit->first == "pots")
       pattern = cpb;
-          else if(cit->first == "aladdin")
+          else if(cit->first == "steriles")
       pattern = afb;
     for(int i = 0; i < cit->second; ++i)
       containers.push_back(makeAPot(potter, pattern));
