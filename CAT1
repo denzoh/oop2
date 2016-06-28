@@ -1,0 +1,21 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Parent {
+std::string first_name;
+std::string middle_name;
+public:
+Parent(std::string f_name, std::string m_name)
+: first_name(f_name), middle_name(m_name){}
+
+std::string getName(){
+return first_name + " " + middle_name;
+}
+};
+class Child : public Parent {};
+int main(){
+Child child("Jolly","Good Fellow");
+cout << "They have a child named " << child.getName() << endl;
+return 0;
+}
+//no correct output
