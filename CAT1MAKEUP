@@ -9,7 +9,7 @@ Child(std::string f_name, std::string m_name)
 : first_name(f_name), middle_name(m_name){}
 
 std::string getName(){
-     return first_name+" "+middle_name;
+     return first_name+" "+middle_name;//TRY AND IMPLEMENT WITHOUT THE RETURN TYPE
     } //!HINT: You need to implement this function
 };
 //!HINT: do not change anything in main() function below
