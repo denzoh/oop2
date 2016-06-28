@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Citizen{
+    std::string country;
+    std::string name;
+    std::string national_id;
+public:
+Citizen(std::string nm, std::string id, std::string cnt)
+:name(nm), national_id(id), country(cnt){}
+std::string getName(){
+    return name;
+}
+std::string getNationalId(){
+    return national_id;
+}
+std::string getCountry(){
+    return country;
+}
+};
+
+int main(){
+
+Citizen citizen("Mac Mende", "000001", "Kenya");
+std::cout << "Name: " << citizen.getName()
+
+<< ", Country: " << citizen.getCountry()
+
+<< ", National ID: " << citizen.getNationalId();
+
+return 0;
+ }
