@@ -1,0 +1,225 @@
+using System;
+namespace InterestApplication
+{
+ 
+  
+    class ExecuteCompound
+    {
+      
+	  static void Main (string[] args)
+	  {
+	  	string a_name = "Customer";
+	  	double savings=0; 
+	  	double I_rate =12; //the investment  rate
+	  	double E_rate=8; 	// the emergency rate
+	  	double Edu_rate=10;	// the  education rate
+	  	double amount_r=0; // the requested amount
+	  	double amount_d =100000; // the default amount
+	  	double amount_d_e =50000;
+	  	double amount_d_edu =60000;
+	  	double I_period = 36;
+	  	double E_period = 24;
+	  	double Edu_period = 12;
+	  	int choice_val; // for the first if statement , allows a choice
+	  	string loan_status_n = "rejected";
+	  	string loan_status_p = "Approved";
+
+
+	   Console.WriteLine("************Welcome to RAFIKI SELF-HELP GROUP  **************");
+	   Console.WriteLine("{0} lets get started" , a_name);
+	   Console.WriteLine("Enter the name of the first loan applicant");
+	   a_name = (Console.ReadLine());
+	   Console.WriteLine("Enter {0}'s savings ", a_name);
+	   savings = double.Parse(Console.ReadLine());
+	  	Console.WriteLine("is {0} a member ? choose Y|N", a_name);
+	  	choice_val=char.Parse(Console.ReadLine());
+	  	if (choice_val =='Y' || choice_val == 'y')
+	  			{
+	  				Console.WriteLine("*****************************************************");
+	  				Console.WriteLine("{0} can access this features", a_name);
+	  				Console.WriteLine("Choose loan type");
+                    Console.WriteLine("1.Investment Loan");
+			        Console.WriteLine("2 Emergency Loan  \n");
+			        Console.WriteLine("3. Education Loan\n");
+			        Console.WriteLine("4. quit \n");
+			        Console.WriteLine("*****************************************************");
+					Console.WriteLine("Enter your choice:");
+					choice_val = int.Parse(Console.ReadLine());
+
+								switch (choice_val)
+								{
+									case 1 :
+									Console.WriteLine("*****************************************************");
+									Console.WriteLine("Enter {0}'s  requested loan amount ", a_name);
+									Console.WriteLine("*****************************************************");
+	                				amount_r = double.Parse(Console.ReadLine());
+	                				if (amount_r < 3* savings)
+	                					{
+	                							Console.WriteLine("*****************************************************");
+	                							Console.WriteLine("{0} ", a_name);
+	                							Console.WriteLine(" has applied for an Investment Loan");
+	                							Console.WriteLine("You have applied for a loan of ksh: {0}", amount_r);
+	                							Console.WriteLine("Your expected repayment period  is {0} months", I_period);
+
+
+	                							amount_r = amount_r * Math.Pow((1+I_rate/100), (I_period/12));
+
+	                							Console.WriteLine("Expected amount to be repaid is ksh:{0}", amount_r);
+	                							Console.WriteLine("LOAN STATUS ={0}", loan_status_p);
+	                							Console.WriteLine("*****************************************************");
+
+
+
+
+
+
+
+	                					}
+	               				 	else 
+	                					{
+	                						Console.WriteLine("*****************************************************");
+	                						Console.WriteLine("{0} ", a_name);
+	                						Console.WriteLine(" has applied for an Investment Loan");
+	                						Console.WriteLine("You have applied for a loan of ksh: {0}", amount_r);
+	                						Console.WriteLine("Your expected repayment period  is {0}", I_period);
+	                						
+	                						amount_r = amount_d * Math.Pow((1+I_rate/100), (I_period/12));
+	                						
+	                						Console.WriteLine("Expected amount to be repaid is ksh:{0}", amount_r);
+	                						Console.WriteLine("LOAN STATUS ={0}", loan_status_p);
+	                						Console.WriteLine("*****************************************************");
+
+
+	                					}
+
+
+
+									break;
+
+									case 2 :
+									Console.WriteLine("*****************************************************");
+									Console.WriteLine("Enter {0}'s  requested loan amount ", a_name);
+									Console.WriteLine("*****************************************************");
+	                				amount_r = double.Parse(Console.ReadLine());
+	                				if (amount_r < 3* savings)
+	                					{
+	                						
+	                						Console.WriteLine(" ------------{0} ----------------  ", a_name);
+	                						Console.WriteLine("-------------- has applied for an Emergency Loan ----------");
+	                						Console.WriteLine("-----------------You have applied for a loan of ksh: {0} ----------------", amount_r);
+	                						Console.WriteLine("------------------Your expected repayment period  is {0} ------------------", E_period);
+
+	                						amount_r = amount_r * Math.Pow((1+E_rate/100), (E_period/12));
+
+	                						Console.WriteLine("------------------Expected amount to be repaid is ksh:{0}----------------", amount_r);
+	                						Console.WriteLine("YOUR LOAN STATUS ={0}", loan_status_p);
+	                						Console.WriteLine("*****************************************************");
+
+
+	                					}
+	                				else 
+	                					{
+	                						Console.WriteLine("**************{0}  has applied for an Emergency Loan*****************", a_name);
+	               
+	                						Console.WriteLine("*****************You have applied for a loan of ksh: {0}*****************", amount_r);
+	                						Console.WriteLine("******************Your expected repayment period  is {0}**************", E_period);
+
+
+	                						amount_r = amount_d_e *Math.Pow((1+E_rate/100), (E_period/12));
+
+	                						Console.WriteLine("*********8Expected amount to be repaid is ksh:{0}******************", amount_r);
+	                						Console.WriteLine("****************LOAN STATUS ={0}********************", loan_status_p);
+
+
+	                					}
+
+	                				break;
+
+
+	                				case 3 :
+	                				Console.WriteLine("*****************************************************");
+	                				Console.WriteLine("Enter {0}'s  requested loan amount ", a_name);
+	                				Console.WriteLine("*****************************************************");
+	                				amount_r = double.Parse(Console.ReadLine());
+	                				if (amount_r < 3* savings)
+	                					{
+	                							Console.WriteLine("{0} ", a_name);
+	                							Console.WriteLine(" has applied for an Education Loan");
+	                							Console.WriteLine("You have applied for a loan of ksh: {0}", amount_r);
+	                							Console.WriteLine("Your expected repayment period  is {0}", Edu_period);
+
+
+	                							amount_r = amount_r * Math.Pow((1+Edu_rate/100), (Edu_period/12));
+	                							
+	                							Console.WriteLine("Expected amount to be repaid is ksh:{0}", amount_r);
+	                							Console.WriteLine("LOAN STATUS ={0}", loan_status_p);
+	                							Console.WriteLine("*****************************************************");
+
+
+			                			}
+			                		else 
+	                					{
+	                						Console.WriteLine("*****************************************************");
+	                						Console.WriteLine("{0} ", a_name);
+	                						Console.WriteLine(" has applied for an Education Loan");
+	                						Console.WriteLine("You have applied for a loan of ksh: {0}", amount_r);
+	                						Console.WriteLine("Your expected repayment period  is {0}", Edu_period);
+
+
+	                						amount_r = amount_d_edu *Math.Pow((1+Edu_rate/100), (Edu_period/12));
+	                						Console.WriteLine("Expected amount to be repaid is ksh:{0}", amount_r);
+	                						Console.WriteLine("LOAN STATUS ={0}", loan_status_p);
+	                						Console.WriteLine("*****************************************************");
+
+	                					}
+	                				break;
+
+	                				
+
+	                				case 4:
+									Console.WriteLine("*****************************************************");
+									Console.WriteLine("\n THANK YOU FOR USING THE LOAN SYSTEM");
+									Console.WriteLine("*****************************************************");
+									break;
+
+
+
+
+
+
+
+								}
+
+
+
+
+
+	  			}
+	  	else if (choice_val== 'N' || choice_val == 'n')
+	  	{
+	  		Console.WriteLine("*****************************************************");
+	  		Console.WriteLine("{0} ", a_name);
+	        Console.WriteLine(" has applied for an  Loan yet he is not a member");
+	        Console.WriteLine("LOAN STATUS ={0}", loan_status_n);
+	        Console.WriteLine("*****************************************************");
+	  	}
+
+	  	else
+	  	{
+
+	  		Console.WriteLine("*****************************************************");
+	  		Console.WriteLine("{0} , has chosen an invalid choice  , restart the program please ." ,a_name);
+	  		Console.WriteLine("*****************************************************");
+	  	}
+
+
+
+
+
+
+	   
+	  	
+
+	  }
+      }
+}
